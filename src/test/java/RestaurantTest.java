@@ -65,4 +65,16 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+
+
+
+    @Test
+    public void calculate_order_total_for_single_item() {
+        List<String> itemNames = Arrays.asList("Sweet corn soup");
+        int total = restaurant.calculateOrderTotal(itemNames);
+        assertEquals(119, total);
+    }
+
+
 }
