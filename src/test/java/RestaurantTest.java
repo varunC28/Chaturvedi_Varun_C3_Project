@@ -3,11 +3,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 class RestaurantTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
@@ -67,7 +68,12 @@ class RestaurantTest {
 
 
 
-
+    @Test
+    public void calculate_order_total_for_empty_item_list() {
+        List<String> itemNames = new ArrayList<>();
+        int total = restaurant.calculateOrderTotal(itemNames);
+        assertEquals(0, total);
+    }
 
     @Test
     public void calculate_order_total_for_single_item() {
@@ -76,5 +82,10 @@ class RestaurantTest {
         assertEquals(119, total);
     }
 
-
+    @Test
+    public void calculate_order_total_for_multiple_items() {
+        List<String> itemNames = Arrays.asList("Sweet corn soup", "Vegetable lasagne");
+        int total = restaurant.calculateOrderTotal(itemNames);
+        assertEquals(388, total); // 119 (Sweet corn soup) + 269 (Vegetable lasagne)
+    }
 }
